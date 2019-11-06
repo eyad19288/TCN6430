@@ -139,4 +139,4 @@ PING 10.61.1.100 (10.61.1.100): 56(84) bytes of data.
 
 
 ## <a name="submission"></a> Submission
-In your lab report, provide screenshots showing that workstations 1, 2, and 3 have obtained the correct IP addresses through DHCP. To do this you can run the command `dhclient -r eth0` which will tell the client to release the current lease that it has from the server. Then run `dhclient eth0` again so obtain back the IP address. Also include a description of what you have learned and any problems encountered.
+In your lab report, provide screenshots showing that workstations 1, 2, and 3 have obtained the correct IP addresses through DHCP. To do this you can run the command `dhclient -r eth0` which will tell the client to release the current lease that it has from the server. Then run `dhclient eth0` again to obtain back the IP address. Also include a description of what you have learned and any problems encountered.
