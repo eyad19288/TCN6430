@@ -31,7 +31,7 @@ Create the following two empty files:
 [root@group61ws0 dhcpd]# touch dhcpd-g61.leases 
 [root@group61ws0 dhcpd]# touch dhcpd.conf
 ```
-dhcpd requires that a lease database is present before it starts. To make the initial lease data base the `dhcpd-g61.leases` file is created. [Man page for dhcpd.leases](https://linux.die.net/man/5/dhcpd.leases).
+dhcpd requires that a lease database is present before it starts. To make the initial lease database the `dhcpd-g61.leases` file is created. [Man page for dhcpd.leases](https://linux.die.net/man/5/dhcpd.leases).
 The `dhcpd-g61.conf` file is used to store the network configuration information required by DHCP clients. [Man page for dhcpd.conf](https://linux.die.net/man/5/dhcpd.conf).
 
 Next, configure the DHCP server to support networks 0 through 3. For each network provide the DHCP clients with subnet mask and broadcast address. For network 0, specify a range which will allow 10 workstations within the IP range for that network. Make sure that the workstations will obtain the IP addresses stated in the logical diagram.
@@ -117,7 +117,7 @@ R3(config-if)#ip helper-address 10.61.0.20
 ### <a name="client"></a> 3. DHCP Client
 Run dhclient on workstations 1, 2 & 3 so that they become DHCP clients.
 ```
-[root@r1 ~]# dhclient eth0
+[root@localhost ~]# dhclient eth0
 ```
 
 If everything was configured correctly then the workstations should obtain IP addresses right away.
@@ -127,7 +127,7 @@ Check that the workstations can connect to each other.
 
 Example: Check that ws3 can communicate with ws1
 ```
-[root@localhost ~]# ping 10.61.1.100
+[root@ws3 ~]# ping 10.61.1.100
 PING 10.61.1.100 (10.61.1.100): 56(84) bytes of data. 
 64 bytes from 10.61.1.100: icmp_seq=1 ttl=62 time=29.1 ms
 64 bytes from 10.61.1.100: icmp_seq=2 ttl=62 time=15.1 ms
