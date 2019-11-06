@@ -1,0 +1,65 @@
+version 8.0R1.9;
+system {
+    host-name br;
+    time-zone America/New_York;
+    root-authentication {
+        encrypted-password "$1$APKhM8qo$ysvkY0Z6D5K7JvxHiY12T/"; ## SECRET-DATA
+    }
+    login {
+        user juniper {
+            uid 100;
+            class super-user;
+            authentication {
+                encrypted-password "$1$LXRWdPg8$RCx9D.WePVwEoJFyJLAo90"; ## SECRET-DATA
+            }
+        }
+        user reboot {
+            uid 2000;
+            class super-user;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAthphWHvE5yOoWgRNb6sSWUkt1wMS1mFyybN5fmrfoHsVRY4xawMGUHreo91R8DbnNwetbg5X2bwjnvMDqxwhuqkGCnJKf0WuZLRpt5y9TLZTLfegWlbLdR2ChtEmu34mDmzOa4c0Y/+cd3EXu+qGVBilhTc7RN91Yj5Hys42CEHkLwyo4WRqktj5D95wvAyhbA4Lte1UG7Shy9rfODqh6A57hO3l7MPXNKJ2MFcoQCtHsAJnGchttgjq6tSmzsSW39YjKWerRk9Du5SpkBQitqZjyUs8SxsdvVaGob6zGhWW5hkwji0HrwGhyWnDYXsgV9PwGogYOhQcL30pcF0auw== root@aitcore2"; ## SECRET-DATA
+            }
+        }
+    }
+    services {
+        ssh {
+            root-login deny;
+        }
+    }
+}
+interfaces {
+    fxp0 {
+        unit 0 {
+            description "connection to ISP peering net";
+            family inet {
+                address 10.90.0.61/24;
+            }
+        }
+    }
+    fxp1 {
+        unit 0 {
+            description "connection to net0";
+            family inet {
+                address 10.61.0.1/24;
+            }
+        }
+    }
+    lo0 {
+        description Loopback;
+        unit 0 {
+            family inet {
+                address 127.0.0.1/32;
+            }
+        }
+    }
+}
+routing-options {
+    static {
+        route 10.61.1.192/30 next-hop 10.61.0.2;
+        route 10.61.1.196/30 next-hop 10.61.0.3;
+        route 10.61.1.0/25 next-hop 10.61.0.2;
+        route 10.61.1.128/26 next-hop 10.61.0.2;
+        route 10.61.2.0/24 next-hop 10.61.0.3;
+        route 0.0.0.0/0 next-hop 10.90.0.254;
+    }
+}

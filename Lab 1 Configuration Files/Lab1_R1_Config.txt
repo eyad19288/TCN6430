@@ -1,0 +1,40 @@
+Current configuration:
+!
+hostname r1
+!
+interface eth0
+ description link to net2
+ ip address 10.61.1.129/26
+ ipv6 nd suppress-ra
+ link-detect
+!
+interface eth1
+ description link to net1
+ ip address 10.61.1.1/25
+ ipv6 nd suppress-ra
+ link-detect
+!
+interface eth2
+ ip address 10.61.1.194/30
+ ipv6 nd suppress-ra
+!
+interface eth3
+ ip address 10.61.1.198/30
+ ipv6 nd suppress-ra
+!
+interface lo
+!
+interface sit0
+ ipv6 nd suppress-ra
+!
+interface wth1
+ ipv6 nd suppress-ra
+!
+ip route 0.0.0.0/0 10.61.1.193
+ip route 10.61.0.0/24 10.61.1.193
+ip route 10.61.2.0/24 10.61.1.197
+!
+ip forwarding
+!
+line vty
+!
