@@ -1,0 +1,101 @@
+Current configuration : 1216 bytes
+!
+version 12.2
+no service pad
+service timestamps debug uptime
+service timestamps log datetime
+service password-encryption
+!
+hostname changeme
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$WCRc$2HRstSrkcTcq8fHHcNaUV.
+!
+username cisco password 7 110A1016141D
+username root privilege 15 password 7 14141B180F0B
+clock timezone Eastern -5
+clock summer-time Eastern recurring
+ip subnet-zero
+ip cef
+!
+!
+no ip domain-lookup
+!
+call rsvp-sync
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ no ip address
+ shutdown
+ duplex half
+ no clns route-cache
+!
+interface Ethernet1/0
+ no ip address
+ shutdown
+ duplex full
+ no clns route-cache
+!
+interface Ethernet1/1
+ no ip address
+ shutdown
+ duplex full
+ no clns route-cache
+!
+interface Ethernet1/2
+ no ip address
+ shutdown
+ duplex full
+ no clns route-cache
+!
+interface Ethernet1/3
+ no ip address
+ shutdown
+ duplex full
+ no clns route-cache
+!
+ip classless
+no ip forward-protocol nd
+!
+no ip http server
+!
+!
+!
+no logging trap
+no cdp run
+!
+!
+!
+control-plane
+!
+!
+dial-peer cor custom
+!
+!
+!
+!
+gatekeeper
+ shutdown
+!
+!
+line con 0
+ exec-timeout 120 0
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ exec-timeout 120 0
+ login local
+ transport preferred ssh
+ transport input ssh
+!
+!
+end

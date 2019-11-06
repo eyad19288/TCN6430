@@ -1,0 +1,40 @@
+juniper@br> show configuration
+version 8.0R1.9;
+system {
+    host-name br;
+    time-zone America/New_York;
+    root-authentication {
+        encrypted-password "$1$APKhM8qo$ysvkY0Z6D5K7JvxHiY12T/";                                                                    ## SECRET-DATA
+    }
+    login {
+        user juniper {
+            uid 100;
+            class super-user;
+            authentication {
+                encrypted-password "$1$LXRWdPg8$RCx9D.WePVwEoJFy                                                                   JLAo90"; ## SECRET-DATA
+            }
+        }
+        user reboot {
+            uid 2000;
+            class super-user;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAthp                                                                   hWHvE5yOoWgRNb6sSWUkt1wMS1mFyybN5fmrfoHsVRY4xawMGUHreo91R8DbnNwe                                                                   tbg5X2bwjnvMDqxwhuqkGCnJKf0WuZLRpt5y9TLZTLfegWlbLdR2ChtEmu34mDmz                                                                   Oa4c0Y/+cd3EXu+qGVBilhTc7RN91Yj5Hys42CEHkLwyo4WRqktj5D95wvAyhbA4                                                                   Lte1UG7Shy9rfODqh6A57hO3l7MPXNKJ2MFcoQCtHsAJnGchttgjq6tSmzsSW39Y                                                                   jKWerRk9Du5SpkBQitqZjyUs8SxsdvVaGob6zGhWW5hkwji0HrwGhyWnDYXsgV9P                                                                   wGogYOhQcL30pcF0auw== root@aitcore2"; ## SECRET-DATA
+            }
+        }
+    }
+    services {
+        ssh {
+            root-login deny;
+        }
+    }
+}
+interfaces {
+    lo0 {
+        description Loopback;
+        unit 0 {
+            family inet {
+                address 127.0.0.1/32;
+            }
+        }
+    }
+}
