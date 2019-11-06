@@ -76,7 +76,7 @@ r1# conf terminal
 r1(config)#
 ```
 
-configure each interface with the correct IP address according to the diagram.
+Configure each interface with the correct IP address according to the diagram.
 ```
 r1(config)# interface eth0                  - enter interface mode 
 r1(config-if)# ip address 10.61.1.129/26    - set ip address 
@@ -92,7 +92,7 @@ r1# show interface eth0
 
 Check the changes made by viewing the running configuration.
 ```
-r1#show running-config
+r1# show running-config
 Building configuration...
 ```
 
